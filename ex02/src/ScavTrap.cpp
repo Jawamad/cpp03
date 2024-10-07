@@ -30,6 +30,13 @@ ScavTrap::~ScavTrap()
 	std::cout << "A SCAVTRAP is destruct" << std::endl;
 }
 
+ScavTrap& ScavTrap::operator=(const ScavTrap& obj)
+{
+	if (this != &obj)
+		ClapTrap::operator=(obj);
+	return *this;
+}
+
 void	ScavTrap::attack(const std::string& target)
 {
 	if (getEnergypoints() && getHitpoints())
