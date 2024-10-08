@@ -1,22 +1,22 @@
 #include "../inc/DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : ClapTrap()
+DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap()
 {
+	setEnergypoints(ScavTrap::_specialenergy);
 	setHitpoints(FragTrap::getHitpoints());
-	setEnergypoints(ScavTrap::getEnergypoints());
 	setAttackdamage(FragTrap::getAttackdamage());
 	std::cout << "DiamondTrap is construct" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), _name(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name), _name(name)
 {
+	setEnergypoints(ScavTrap::_specialenergy);
 	setHitpoints(FragTrap::getHitpoints());
-	setEnergypoints(ScavTrap::getEnergypoints());
 	setAttackdamage(FragTrap::getAttackdamage());
 	std::cout << "DiamondTrap is construct" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& obj): ClapTrap(obj), FragTrap(obj), ScavTrap(obj), _name(obj.getName())
+DiamondTrap::DiamondTrap(const DiamondTrap& obj): ClapTrap(obj), ScavTrap(obj),FragTrap(obj), _name(obj.getName())
 {
 	std::cout << "DiamondTrap is construct" << std::endl;
 }
@@ -24,11 +24,6 @@ DiamondTrap::DiamondTrap(const DiamondTrap& obj): ClapTrap(obj), FragTrap(obj), 
 DiamondTrap::~DiamondTrap()
 {
 	std::cout << "DiamondTrap is destruct" << std::endl;
-}
-
-void DiamondTrap::attack(const std::string& target)
-{
-	ScavTrap::attack(target);
 }
 
 void DiamondTrap::whoAmI()

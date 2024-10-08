@@ -5,6 +5,7 @@ ScavTrap::ScavTrap()
 	setHitpoints(100);
 	setMaxhitpoints(100);
 	setEnergypoints(50);
+	_specialenergy = 50;
 	setAttackdamage(20);
 	std::cout << "A SCAVTRAP is construct" << std::endl;
 }
@@ -15,6 +16,7 @@ ScavTrap::ScavTrap(std::string name)
 	setMaxhitpoints(100);
 	setHitpoints(100);
 	setEnergypoints(50);
+	_specialenergy = 50;
 	setAttackdamage(20);
 	std::cout << "A SCAVTRAP "<< name <<" is construct" << std::endl;
 }
@@ -42,7 +44,7 @@ void	ScavTrap::attack(const std::string& target)
 	if (getEnergypoints() && getHitpoints())
 	{
 		setEnergypoints(getEnergypoints() - 1);
-		std::cout << "ScavTrap " << getName()<< " attacks " << target << ", causing " << getAttackdamage() << " points of damage. It's better than any other ClapTrap" << std::endl;
+		std::cout << "ScavTrap " << getName()<< " attacks " << target << ", causing " << _attackdamage << " points of damage. It's better than any other ClapTrap" << std::endl;
 	}
 	else
 		std::cout << "Scavtrap" << getName() << " is too busy to attack " << target << " please remind him later." << std::endl;
